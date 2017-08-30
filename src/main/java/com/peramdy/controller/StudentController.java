@@ -22,19 +22,23 @@ public class StudentController {
 
     @RequestMapping(value = "/info.do", method = RequestMethod.POST)
     @ResponseBody
-    public String queryStudentInfoList(@RequestParam("userId") Integer userId) {
+    public String queryStudentInfo(@RequestParam("userId") Integer userId) {
         StudentDto dto = studentService.queryStudentInfoList(userId);
-        return "success";
+        return dto.toString();
     }
 
+    @RequestMapping(value = "/info2.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String queryStudentInfo2(@RequestParam("userId") Integer userId) {
+        StudentDto dto = studentService.queryStuInfo(userId);
+        return dto.toString();
+    }
 
     @RequestMapping(value = "/test.do", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<?> test() {
-
+    public String test() {
         System.out.println("test");
-
-        return null;
+        return "test";
     }
 
 }

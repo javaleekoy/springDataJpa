@@ -45,5 +45,13 @@ public class StudentDto implements Serializable {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "StudentDto{" +
+                "id=" + id +
+                ", Name='" + Name + '\'' +
+                ", classId=" + classId +
+                ", className='" + className + '\'' +
+                '}';
+    }
 }

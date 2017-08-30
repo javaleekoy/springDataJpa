@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * Created by peramdy on 2017/8/21.
  */
-@Repository("studentDao")
+@Repository("studentDaoRead")
 public class StudentDaoImpl implements StudentDao {
 
 
@@ -30,15 +30,6 @@ public class StudentDaoImpl implements StudentDao {
         query.setParameter("userId", userId);
         query.unwrap(org.hibernate.SQLQuery.class)
                 .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
-//        StudentDto studentDto = null;
-//        Map<String, Object> map = (Map<String, Object>) query.getSingleResult();
-//        try {
-//            studentDto = (StudentDto) MapUtil.mapToBean(map, StudentDto.class);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return studentDto;
-
         List<Map<String, Object>> mapList = query.getResultList();
         if (mapList == null || mapList.size() < 1)
             return null;

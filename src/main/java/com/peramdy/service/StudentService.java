@@ -9,4 +9,6 @@ public interface StudentService {
 
     StudentDto queryStudentInfoList(Integer userId);
 
+    StudentDto queryStuInfo(Integer userId);
+
 }

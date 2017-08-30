@@ -15,8 +15,15 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentDao studentDao;
 
-    public StudentDto queryStudentInfoList(Integer userId){
+    @Autowired
+    private com.peramdy.dao.write.StudentDao studentDaoW;
+
+    public StudentDto queryStudentInfoList(Integer userId) {
         return studentDao.queryStudent(userId);
+    }
+
+    public StudentDto queryStuInfo(Integer userId) {
+        return studentDaoW.queryStuInfById(userId);
     }
 
 }

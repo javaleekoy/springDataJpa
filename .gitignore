@@ -8,3 +8,4 @@
 /.idea/
 *.iml
 /overlays/*
+/logs/*

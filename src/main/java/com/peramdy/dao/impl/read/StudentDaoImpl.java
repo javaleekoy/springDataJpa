@@ -26,7 +26,7 @@ public class StudentDaoImpl implements StudentDao {
     public StudentDto queryStudent(Integer userId) {
 
 
-        Query query = entityManager.createNativeQuery("SELECT s.id AS id, s.stuName AS Name ,c.id AS classId ,c.className AS className FROM pay.student s LEFT JOIN pay.class c ON c.id = s.classId WHERE s.id = :userId");
+        Query query = entityManager.createNativeQuery("SELECT s.id AS id, s.stuName AS Name ,c.id AS classId ,c.className AS className FROM student s LEFT JOIN class c ON c.id = s.classId WHERE s.id = :userId");
         query.setParameter("userId", userId);
         query.unwrap(org.hibernate.SQLQuery.class)
                 .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);

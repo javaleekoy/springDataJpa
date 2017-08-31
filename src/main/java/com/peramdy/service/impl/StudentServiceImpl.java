@@ -2,6 +2,7 @@ package com.peramdy.service.impl;
 
 import com.peramdy.dao.read.StudentDao;
 import com.peramdy.dto.StudentDto;
+import com.peramdy.repository.read.StudentRepository;
 import com.peramdy.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,17 +14,32 @@ import org.springframework.stereotype.Service;
 public class StudentServiceImpl implements StudentService {
 
     @Autowired
-    private StudentDao studentDao;
+    private StudentDao studentDaoR;
+
+    @Autowired
+    private StudentRepository StudentRepository;
 
     @Autowired
     private com.peramdy.dao.write.StudentDao studentDaoW;
 
-    public StudentDto queryStudentInfoList(Integer userId) {
-        return studentDao.queryStudent(userId);
+    @Autowired
+    private com.peramdy.repository.write.StudentRepository studentRepositoryW;
+
+
+
+    public StudentDto queryStudentR(Integer userId) {
+        return studentDaoR.queryStudent(userId);
     }
 
-    public StudentDto queryStuInfo(Integer userId) {
+    public String queryStuNameR(Integer userId){
+        return StudentRepository.queryStuName(userId);
+    }
+
+    public StudentDto queryStuInfoW(Integer userId) {
         return studentDaoW.queryStuInfById(userId);
     }
 
+    public int queryStuCountW(Integer classId) {
+        return studentRepositoryW.queryStuCount(classId);
+    }
 }

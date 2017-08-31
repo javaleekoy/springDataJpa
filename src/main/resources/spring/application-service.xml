@@ -16,21 +16,21 @@
 
     <context:component-scan base-package="com.peramdy.service"/>
 
+
     <tx:annotation-driven transaction-manager="transactionManagerWrite"/>
 
-    <tx:advice id="txManager" transaction-manager="transactionManagerWrite">
+    <tx:advice id="txManagerWrite" transaction-manager="transactionManagerWrite">
         <tx:attributes>
             <tx:method name="insert*" propagation="REQUIRED"/>
             <tx:method name="add*" propagation="REQUIRED"/>
             <tx:method name="update*" propagation="REQUIRED"/>
-
             <tx:method name="*" propagation="SUPPORTS" read-only="true"/>
         </tx:attributes>
     </tx:advice>
 
     <aop:config>
-        <aop:pointcut id="serviceMethod" expression="execution(* com.peramdy.service.*.*(..))"/>
-        <aop:advisor advice-ref="txManager" pointcut-ref="serviceMethod"/>
+        <aop:pointcut id="serviceMethodWrite" expression="execution(* com.peramdy.service.*.*(..))"/>
+        <aop:advisor advice-ref="txManagerWrite" pointcut-ref="serviceMethodWrite"/>
     </aop:config>
 
 

@@ -82,13 +82,13 @@
     <!-- txManager(read) -->
     <bean id="transactionManagerRead" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactoryRead"/>
-        <property name="dataSource" ref="dataSourceRead"/>
+        <!--<property name="dataSource" ref="dataSourceRead"/>-->
     </bean>
 
     <!-- txManager(write) -->
     <bean id="transactionManagerWrite" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactoryWrite"/>
-        <property name="dataSource" ref="dataSourceWrite"/>
+       <!-- <property name="dataSource" ref="dataSourceWrite"/>-->
     </bean>
 
     <!-- read -->
@@ -104,7 +104,7 @@
     </jpa:repositories>
 
 
-    <tx:annotation-driven transaction-manager="transactionManagerRead"/>
+    <tx:annotation-driven transaction-manager="transactionManagerWrite"/>
 
     <!-- hibernateJpaVendorAdapterRead(read) -->
     <bean id="hibernateJpaVendorAdapterRead" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">

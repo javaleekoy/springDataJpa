@@ -20,25 +20,32 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @RequestMapping(value = "/info.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/infoR.do", method = RequestMethod.POST)
     @ResponseBody
     public String queryStudentInfo(@RequestParam("userId") Integer userId) {
-        StudentDto dto = studentService.queryStudentInfoList(userId);
+        StudentDto dto = studentService.queryStudentR(userId);
         return dto.toString();
     }
 
-    @RequestMapping(value = "/info2.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/infoW.do", method = RequestMethod.POST)
     @ResponseBody
     public String queryStudentInfo2(@RequestParam("userId") Integer userId) {
-        StudentDto dto = studentService.queryStuInfo(userId);
+        StudentDto dto = studentService.queryStuInfoW(userId);
         return dto.toString();
     }
 
-    @RequestMapping(value = "/test.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/stuCountW.do", method = RequestMethod.POST)
     @ResponseBody
-    public String test() {
-        System.out.println("test");
-        return "test";
+    public String stuCount(@RequestParam("classId") Integer classId) {
+        int stuCount = studentService.queryStuCountW(classId);
+        return stuCount + "";
+    }
+
+    @RequestMapping(value = "/stuNameR.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String stuName(@RequestParam("userId") Integer userId) {
+        String stuName = studentService.queryStuNameR(userId);
+        return stuName;
     }
 
 }

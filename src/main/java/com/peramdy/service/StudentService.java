@@ -7,8 +7,12 @@ import com.peramdy.dto.StudentDto;
  */
 public interface StudentService {
 
-    StudentDto queryStudentInfoList(Integer userId);
+    StudentDto queryStudentR(Integer userId);
 
-    StudentDto queryStuInfo(Integer userId);
+    String queryStuNameR(Integer userId);
+
+    StudentDto queryStuInfoW(Integer userId);
+
+    int queryStuCountW(Integer classId);
 
 }

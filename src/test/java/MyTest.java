@@ -1,5 +1,5 @@
 import com.peramdy.dto.StudentDto;
-import com.peramdy.entity.read.Student;
+import com.peramdy.repository.read.StudentRepository;
 import com.peramdy.service.StudentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +19,12 @@ public class MyTest {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private com.peramdy.repository.write.StudentRepository studentRepositoryW;
+
     @Test
     public void testOne() {
         System.out.println("//////////");
@@ -27,9 +33,21 @@ public class MyTest {
 
     @Test
     public void testTwo() {
-        StudentDto studentDto = studentService.queryStudentInfoList(11);
+        StudentDto studentDto = studentService.queryStuInfoW(11);
         if (studentDto != null)
             System.out.println(studentDto.getClassId());
+    }
+
+    @Test
+    public void testThree() {
+        String stuName = studentRepository.queryStuName(1);
+        System.out.println(stuName);
+    }
+
+    @Test
+    public void testFour() {
+        int stuCount = studentRepositoryW.queryStuCount(11);
+        System.out.println(stuCount);
     }
 
 }

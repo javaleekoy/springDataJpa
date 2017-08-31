@@ -23,7 +23,7 @@ public class StudentDaoImpl implements StudentDao {
     private EntityManager entityManager;
 
     public StudentDto queryStuInfById(Integer stuId) {
-        String sql = "SELECT s.id AS id, s.stuName AS Name ,c.id AS classId ,c.className AS className FROM pay.student s LEFT JOIN pay.class c ON c.id = s.classId WHERE s.id = :userId";
+        String sql = "SELECT s.id AS id, s.stuName AS Name ,c.id AS classId ,c.className AS className FROM student s LEFT JOIN class c ON c.id = s.classId WHERE s.id = :userId";
         Query query = entityManager.createNativeQuery(sql);
         query.setParameter("userId", stuId);
         query.unwrap(org.hibernate.SQLQuery.class)
